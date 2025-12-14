@@ -7,8 +7,14 @@ defaults:
 on:
   push:
     branches: [main]
+    paths:
+      - 'planora-web/**'
+      - '.github/workflows/web-ci.yml'
   pull_request:
     branches: [main]
+    paths:
+      - 'planora-web/**'
+      - '.github/workflows/web-ci.yml'
 
 jobs:
   build-and-test:
@@ -35,7 +41,7 @@ jobs:
         run: pnpm install
 
       - name: Build
-        run: pnpm run build
+        run: pnpm build
 
       - name: Run tests
-        run: pnpm run test -- --ci --reporter=dot --coverage
+        run: pnpm test
