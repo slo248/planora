@@ -17,8 +17,8 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Show working directory
-        run: pwd
+      - name: Copy pnpm-lock.yaml to root
+        run: cp pnpm-lock.yaml ../pnpm-lock.yaml
 
       - name: Install pnpm
         uses: pnpm/action-setup@v3
