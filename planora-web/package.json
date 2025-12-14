@@ -1,6 +1,7 @@
 {
   "name": "planora-web",
   "version": "0.0.1",
+  "author": "slo248",
   "type": "module",
   "engines": {
     "node": "20.19.6",
