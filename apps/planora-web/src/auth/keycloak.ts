@@ -8,6 +8,6 @@ export const keycloakClient = new Keycloak({
 });
 
 export const initConfig = {
-  onLoad: "login-required",
+  onLoad: "check-sso",
   checkLoginIframe: false,
 };

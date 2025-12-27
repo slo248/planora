@@ -44,9 +44,14 @@ function App() {
         <div>{`User is ${
           !keycloak.authenticated ? "NOT " : ""
         }authenticated`}</div>
-
         <div>{`User email: ${keycloak.tokenParsed?.email || "Unknown"}`}</div>
         <div>{`User ID: ${keycloak.tokenParsed?.sub || "Unknown"}`}</div>
+
+        {!keycloak.authenticated && (
+          <button type="button" onClick={() => keycloak.login()}>
+            Login
+          </button>
+        )}
 
         {!!keycloak.authenticated && (
           <>
