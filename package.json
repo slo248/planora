@@ -1,0 +1,12 @@
+{
+  "name": "planora",
+  "version": "0.0.1",
+  "description": "Planora is a task management system. This monorepo contains both the backend API and the frontend web application for managing tasks efficiently.",
+  "license": "MIT",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "devDependencies": {
+    "turbo": "2.7.2"
+  }
+}
