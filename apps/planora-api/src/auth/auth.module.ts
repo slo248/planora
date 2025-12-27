@@ -18,5 +18,6 @@ import { AuthController } from './auth.controller';
     }),
   ],
   controllers: [AuthController],
+  exports: [KeycloakConnectModule],
 })
 export class AuthModule {}

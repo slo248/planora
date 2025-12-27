@@ -24,4 +24,5 @@
     "noFallthroughCasesInSwitch": false,
     "preserveWatchOutput": true,
   },
+  "include": ["src","tests"]
 }
