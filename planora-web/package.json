@@ -15,6 +15,9 @@
     "test": "vitest run"
   },
   "dependencies": {
+    "@react-keycloak/web": "3.4.0",
+    "envalid": "8.1.1",
+    "keycloak-js": "26.2.2",
     "react": "19.2.0",
     "react-dom": "19.2.0"
   },
