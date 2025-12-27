@@ -1,20 +1,10 @@
-name: Web CI
+name: CI
 
-defaults:
-  run:
-    working-directory: ./planora-web
-    
 on:
   push:
     branches: [main]
-    paths:
-      - 'planora-web/**'
-      - '.github/workflows/web-ci.yml'
   pull_request:
     branches: [main]
-    paths:
-      - 'planora-web/**'
-      - '.github/workflows/web-ci.yml'
 
 jobs:
   build-and-test:
@@ -22,9 +12,6 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
-
-      - name: Copy pnpm-lock.yaml to root
-        run: cp pnpm-lock.yaml ../pnpm-lock.yaml
 
       - name: Install pnpm
         uses: pnpm/action-setup@v3
@@ -45,3 +32,9 @@ jobs:
 
       - name: Run tests
         run: pnpm test
+
+      - name: Check types
+        run: pnpm check-types
+
+      - name: Lint code
+        run: pnpm lint
