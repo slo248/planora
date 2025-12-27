@@ -4,9 +4,16 @@
   "description": "Planora is a task management system. This monorepo contains both the backend API and the frontend web application for managing tasks efficiently.",
   "license": "MIT",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "turbo run build",
+    "dev": "turbo run dev",
+    "lint": "turbo run lint",
+    "check-types": "turbo run check-types"
   },
   "devDependencies": {
     "turbo": "2.7.2"
+  },
+  "packageManager": "pnpm@10.25.0",
+  "engines": {
+    "node": "20.19.6"
   }
 }
