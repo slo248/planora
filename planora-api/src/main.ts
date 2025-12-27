@@ -8,6 +8,7 @@ import { configSwagger } from './utils/swagger';
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
 
+  app.enableCors('*');
   configSwagger(app);
 
   const env = app.get<Config>(ENVALID);

@@ -4,4 +4,6 @@ export const env = cleanEnv(import.meta.env, {
   VITE_KEYCLOAK_URL: str(),
   VITE_KEYCLOAK_REALM: str(),
   VITE_KEYCLOAK_CLIENT_ID: str(),
+
+  VITE_PLANORA_API_URL: str({ default: "http://localhost:3000" }),
 });

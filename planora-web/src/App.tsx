@@ -1,11 +1,29 @@
 import { useKeycloak } from "@react-keycloak/web";
+import { useState } from "react";
 import "./App.css";
 import reactLogo from "./assets/react.svg";
 import Counter from "./components/Counter";
+import { env } from "./config";
 import viteLogo from "/vite.svg";
 
 function App() {
   const { keycloak } = useKeycloak();
+  const [apiResult, setApiResult] = useState<string | null>(null);
+
+  async function testBackendBearer() {
+    if (!keycloak.token) return;
+    try {
+      const res = await fetch(`${env.VITE_PLANORA_API_URL}/auth/keycloak`, {
+        headers: {
+          Authorization: `Bearer ${keycloak.token}`,
+        },
+      });
+      const text = await res.text();
+      setApiResult(text);
+    } catch (e) {
+      setApiResult("Error: " + (e instanceof Error ? e.message : String(e)));
+    }
+  }
 
   return (
     <>
@@ -31,9 +49,20 @@ function App() {
         <div>{`User ID: ${keycloak.tokenParsed?.sub || "Unknown"}`}</div>
 
         {!!keycloak.authenticated && (
-          <button type="button" onClick={() => keycloak.logout()}>
-            Logout
-          </button>
+          <>
+            <button type="button" onClick={testBackendBearer}>
+              Test Backend Bearer
+            </button>
+            <button type="button" onClick={() => keycloak.logout()}>
+              Logout
+            </button>
+          </>
+        )}
+        {apiResult && (
+          <div style={{ marginTop: 16 }}>
+            <strong>API Result:</strong>
+            <pre>{apiResult}</pre>
+          </div>
         )}
       </div>
     </>
