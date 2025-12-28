@@ -1,5 +1,12 @@
-import { Controller, Get, Logger, Req, UseGuards } from '@nestjs/common';
-import { ApiBearerAuth } from '@nestjs/swagger';
+import {
+  Controller,
+  Get,
+  HttpStatus,
+  Logger,
+  Req,
+  UseGuards,
+} from '@nestjs/common';
+import { ApiBearerAuth, ApiResponse } from '@nestjs/swagger';
 import { AuthGuard } from 'nest-keycloak-connect';
 import type { TypedRequest } from 'src/types/request';
 
@@ -10,8 +17,14 @@ export class AuthController {
   @Get('keycloak')
   @UseGuards(AuthGuard)
   @ApiBearerAuth()
+  @ApiResponse({
+    status: HttpStatus.OK,
+    description: 'Accessed protected route successfully',
+    type: String,
+  })
+  @ApiResponse({ status: HttpStatus.UNAUTHORIZED, description: 'Unauthorized' })
   keycloak(@Req() req: TypedRequest) {
     this.logger.debug(`Accessed by user: ${JSON.stringify(req.user)}`);
-    return { message: 'You have accessed a protected route from Keycloak!' };
+    return 'You have accessed a protected route from Keycloak!';
   }
 }
