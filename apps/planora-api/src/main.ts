@@ -2,7 +2,7 @@ import { Logger } from '@nestjs/common';
 import { NestFactory } from '@nestjs/core';
 import { ENVALID } from 'nestjs-envalid';
 import { AppModule } from './app.module';
-import { Config } from './config/config';
+import { Config } from './modules/config/config';
 import { configSwagger } from './utils/swagger';
 
 async function bootstrap() {

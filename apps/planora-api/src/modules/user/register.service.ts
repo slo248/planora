@@ -1,6 +1,6 @@
 import { BadRequestException, Injectable, Logger } from '@nestjs/common';
 import { plainToInstance } from 'class-transformer';
-import { PrismaService } from 'src/db/prisma.service';
+import { PrismaService } from '../db/prisma.service';
 import { RegisterRequestDto } from './dto/register-request.dto';
 import { RegisterResultDto } from './dto/register-result.dto';
 
